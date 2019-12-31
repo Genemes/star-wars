@@ -1,0 +1,143 @@
+<section>
+    <div class="modal">
+
+        <div class="modal-inner" *ngIf="(person$ | async) as person; else loading">
+            
+
+            <span class="fas fa-arrow-left" (click)="cancelar()"></span>
+            <span class="fas fa-times-circle" (click)="cancelar()"></span>
+
+            <img src="{{ image }}" class="img-person" alt="personagem">
+
+            
+            <div class="content">
+                <div class="item">
+                    <div class="sabre">
+                        <div class="lightsaber">
+                            <label for="name">Name:</label>
+                            <input type="checkbox" id="name" checked="checked">
+                            <div class="plasma obi-wan"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="block-name"> {{ person.name }} </span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="sabre">
+                        <div class="lightsaber">
+                            <label for="birth-year">Birth Year:</label>
+                            <input type="checkbox" id="birth-year" checked="checked">
+                            <div class="plasma obi-wan"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="block-name"> {{ person.birth_year }} </span>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="sabre">
+                        <div class="lightsaber">
+                            <label for="birth-year">Eye Color:</label>
+                            <input type="checkbox" id="birth-year" checked="checked">
+                            <div class="plasma obi-wan"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="block-name"> {{ person.eye_color }} </span>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="sabre">
+                        <div class="lightsaber">
+                            <label for="birth-year">Gender:</label>
+                            <input type="checkbox" id="birth-year" checked="checked">
+                            <div class="plasma obi-wan"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="block-name"> {{ person.gender }} </span>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="sabre">
+                        <div class="lightsaber">
+                            <label for="birth-year">Hair Color:</label>
+                            <input type="checkbox" id="birth-year" checked="checked">
+                            <div class="plasma yoda"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="block-name"> {{ person.hair_color }} </span>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="sabre">
+                        <div class="lightsaber">
+                            <label for="birth-year">Height:</label>
+                            <input type="checkbox" id="birth-year" checked="checked">
+                            <div class="plasma yoda"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="block-name"> {{ person.height }} </span>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="sabre">
+                        <div class="lightsaber">
+                            <label for="birth-year">Mass:</label>
+                            <input type="checkbox" id="birth-year" checked="checked">
+                            <div class="plasma yoda"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="block-name"> {{ person.mass }} </span>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="sabre">
+                        <div class="lightsaber">
+                            <label for="birth-year">Skin Color:</label>
+                            <input type="checkbox" id="birth-year" checked="checked">
+                            <div class="plasma yoda"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="block-name"> {{ person.skin_color }} </span>
+                    </div>
+                </div>
+
+                <!--div class="item">
+                    <div class="starships">
+                        <div *ngIf="mylist as starships">
+                            <div class="shape" *ngFor="let starship of starships.results" >
+                                <p>{{ starship.name }} </p>
+                            </div>
+                        <div>
+                    </div>
+                </div -->
+            </div>
+        </div>
+        
+    </div>
+
+    <ng-template #loading>
+    
+        <div class="modal">
+            <span class="fas fa-arrow-left" (click)="cancelar()"></span>
+            <div class="modal-inner">
+                <h2>Carregando personagem...</h2>
+            </div>
+        </div>
+        
+    </ng-template>
+
+</section>
