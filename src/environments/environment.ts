@@ -7,9 +7,9 @@ export const environment = {
     API: 'https://swapi.co/api/',
     BASE_URL: '/inv',
     // Credenciais para Google Search Images
-    GOOGLE_API_KEY: 'AIzaSyDq_nwWsYkP8Wd13hG2o23mEaj0tpQw2EQ',
+    GOOGLE_API_KEY: '',
     GOOGLE_API_URL: 'https://www.googleapis.com/customsearch/v1?key=',
-    GOOGLE_ID: '004869299073777913558:vp5ui4xprny'
+    GOOGLE_ID: ''
 
     
 };
