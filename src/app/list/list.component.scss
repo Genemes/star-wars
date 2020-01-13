@@ -11,7 +11,7 @@ $color-obi: rgb(55,132,214);
     grid-template-columns: 50% 50%;
 
     .overlay{
-        background-color: rgba(0, 0, 0, 0.35);
+        background-color: rgba(0, 0, 0, 0.65);
         width: 100%;
         height: 100%;
         position: absolute;
@@ -76,6 +76,7 @@ $color-obi: rgb(55,132,214);
     }
 
     .shape{
+        background-size: cover !important;
         width: 50%;
         height: 150px;
         padding: 2% 5%;
@@ -83,6 +84,7 @@ $color-obi: rgb(55,132,214);
         animation-duration: 0.3s;
         position: relative;
         cursor: pointer;
+        
 
         &:hover{
             .lightsaber input[type=checkbox]:checked ~ div.plasma {
@@ -91,7 +93,7 @@ $color-obi: rgb(55,132,214);
         }
     }
     .shape:nth-of-type(odd) {
-        background: url('../../assets/1.jpg') no-repeat;
+        //background: url('../../assets/1.jpg') no-repeat;
         background-size: 100% 100%;
         clip-path: polygon(8% 0%, 0% 15%, 0% 85%, 8% 100%, 100% 100%, 100% 0%);
         margin: 5px 0 0 calc(40% - 2.5px);
@@ -123,7 +125,8 @@ $color-obi: rgb(55,132,214);
     }
     
     .shape:nth-of-type(even) {
-        background: url('../../assets/2.jpg') no-repeat;
+        //background: url('../../assets/2.jpg') no-repeat;
+        background-color:#ffffff;
         background-size: 100% 100%;
         clip-path: polygon(92% 2%, 100% 15%, 100% 85%, 92% 100%, 0% 100%, 0% 0%);
         margin: 5px 0 0 calc(0% + 2.5px);
@@ -421,12 +424,65 @@ $color-obi: rgb(55,132,214);
     }
 }
   
-  
-  @media screen and (max-width: 768px) {
-      
-    .modal-inner {
-      width: 80%;
-      height: 80%;
-      box-sizing: border-box;
+
+@media screen and (max-width: 750px) {
+    .shape:nth-of-type(even) {
+        .block{
+            left: 53% !important;
+        }
     }
-  }
+    .modal-inner {
+        width: 80%;
+        height: 80%;
+        box-sizing: border-box;
+    }
+}
+@media screen and (min-width: 751px) and (max-width: 800px) {
+    .shape:nth-of-type(even) {
+        .block{
+            left: 56% !important;
+        }
+    } 
+}
+@media screen and (min-width: 801px) and (max-width: 850px) {
+    .shape:nth-of-type(even) {
+        .block{
+            left: 59% !important;
+        }
+    }
+}
+@media screen and (min-width: 851px) and (max-width: 900px) {
+    .shape:nth-of-type(even) {
+        .block{
+            left: 62% !important;
+        }
+    } 
+}
+@media screen and (min-width: 901px) and (max-width: 950px) {
+    .shape:nth-of-type(even) {
+        .block{
+            left: 65% !important;
+        }
+    }
+}
+@media screen and (min-width: 951px) and (max-width: 1050px) {
+    .shape:nth-of-type(even) {
+        .block{
+            left: 68% !important;
+        }
+    } 
+}
+@media screen and (min-width: 1051px) and (max-width: 1150px) {
+    .shape:nth-of-type(even) {
+        .block{
+            left: 75% !important;
+        }
+    }
+}
+@media screen and (min-width: 1151px) {
+    .shape:nth-of-type(even) {
+        .block{
+            left: 75% !important;
+        }
+    } 
+}

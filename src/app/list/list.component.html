@@ -1,10 +1,10 @@
 <app-header></app-header>
 
-<div class="grid-container" *ngIf="(peoples$ | async) as peoples; else loading">
+<div class="grid-container" *ngIf="listQueries && (peoples$ | async) as peoples; else loading">
     
-        <div class="shape" *ngFor="let people of peoples.results" 
-        
-            mat-raised-button (click)="add(people.url)">
+        <div class="shape" *ngFor="let people of peoples.results; let i = index"
+            [style.background]="getBackground(listQueries[i]['url'])"
+             (click)="add(people.url)">
             
             <div class="overlay"></div>
 
@@ -43,7 +43,7 @@
             </li>
             <li *ngFor="let page of pages; let i = index" 
                 [ngClass]="( currentPage == i+1 ) ? 'page-item active' : 'page-item'">
-                <a class="page-link" (click)="listar(i+1)"> {{ i+1 }} </a>
+                <a class="page-link" (click)="preencheListQuery(i+1)"> {{ i+1 }} </a>
             </li>
             <li [ngClass]="next() ? 'page-item active' : 'page-item'">
                 <a class="page-link" (click)="nextPage()" > &gt;&gt; </a>

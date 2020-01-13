@@ -1,11 +1,8 @@
-import { map } from 'rxjs/operators';
 import { ListPersonService } from './list-person.service';
 import { Component, OnInit, Inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { ImageSearchService } from '../shared/image-search.service';
-import { Observable, concat, forkJoin } from 'rxjs';
+import { Observable } from 'rxjs';
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
-import { ListService } from '../shared/list.service';
 
 @Component({
   selector: 'app-person',
@@ -16,24 +13,18 @@ export class PersonComponent implements OnInit {
 
     person$: Observable<any>
     image$: Observable<any>
-    starships$: Observable<any>
-    listStarships: any
-
-    mylist: any
-
+    listStarships: Array<any>
+    
     image: string
     query: string
     id: number;
-
     
-    constructor(private service: ListPersonService,
-            private serviceImage: ImageSearchService,
-            private dialogRef: MatDialogRef<PersonComponent>,
-            @Inject(MAT_DIALOG_DATA) public data: any) {
-                if (this.data) {
-                    this.id = this.data.data;
-                }
+    constructor(private service: ListPersonService, private serviceImage: ImageSearchService,
+        private dialogRef: MatDialogRef<PersonComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
+            if (this.data) {
+                this.id = this.data.data;
             }
+    }
 
     ngOnInit() {
         this.loadPerson()
@@ -43,13 +34,29 @@ export class PersonComponent implements OnInit {
             this.getImage(data.name)
             
             //Recupera starships do personagem
-            /*this.listStarships =  data.starships.map(item => item)
-            this.mylist.map( item =>{
-                this.service.getStarship(item) 
-            })*/
+            this.listStarships = new Array()
+            this.listStarships = data.starships.map(function( element, index ) {
+                let obj = new Object()
+                obj['id'] = index
+                obj['query'] = element
+                return obj
+            })
+            this.getInfoStarships(this.listStarships)
         })
+    }
 
-        
+
+    async getInfoStarships(list){
+        await list.map( item  => {
+            let query = item['query']
+            this.service.getStarship(query).subscribe( response => {
+                let obj = new Object()
+                obj['id'] = item['id']
+                obj['query'] = item['query']
+                item['nave'] = response
+                return obj
+            })
+        })        
     }
   
     async loadPerson(){

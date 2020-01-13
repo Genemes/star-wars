@@ -16,7 +16,6 @@ export class ImageSearchService{
   
     constructor(private http: HttpClient) { }
 
-
     //funcao para acrescentar + entre as palavras
     formatQuery(query: string){
         return query.replace(" ", "+")
@@ -24,26 +23,7 @@ export class ImageSearchService{
 
     getImage(query) {
         query = this.formatQuery(query)
-        console.log(`query: ${query}`)
         return this.http.get(this.URL + query).pipe(take(1))
-    }
-
-    async getUrl(query){
-        let link: string
-        let image$: Observable<any>
-        image$ = await this.getImage(query)
-
-        
-        //image$.subscribe(data => url = data.items[0].link)
-
-        image$.subscribe(
-            data => {
-                link = data.items[0].link
-                console.log(`url: ${data.items[0].link}`)
-                return link
-            }
-        )
-        
     }
 
 }
