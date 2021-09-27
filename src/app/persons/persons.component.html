@@ -1,0 +1,64 @@
+<header>
+    <img src="../../assets/home.jpg" alt="logo Star Wars">
+    <h1>Star Wars</h1>
+</header>
+
+<mat-icon class="arrow-animate">arrow_forward_ios</mat-icon>
+
+<div class="grid-container" *ngIf="people; else loading">
+    
+    <div class="shape" *ngFor="let person of people.results" 
+    [style.background]="getBackground(person.url)" (click)="add(person.url)">
+    
+        <div class="overlay"></div>
+
+        <span class="block block-height">
+            {{ person.height + 'cm'  }}
+        </span>
+        <span class="block block-mass">
+            {{ getWeight(person) }}
+        </span>
+        <span class="block block-gender"> 
+            {{ person.gender.length > 4 ? person.gender.substring(0,4) + ' ...' : person.gender }}
+        </span>
+        <span class="block-name"> {{ person.name }} </span>
+        
+        <div class="sabre">
+            <div class="lightsaber">
+                <label for="{{person.name}}"></label>
+                <input type="checkbox" id="{{person.name}}" checked="checked">
+                <div class="plasma obi-wan"></div>
+            </div>
+        </div>
+    </div>
+
+    <div></div><div></div>
+
+    <nav class="pagination">
+        <ul class=" container flex">
+            <li class="page-item active">
+                <a class="page-link" (click)="previousPage()" > &lt;&lt; </a>
+            </li>
+            <li *ngFor="let page of pages; let i = index" 
+                [ngClass]="( currentPage == i+1 ) ? 'page-item active' : 'page-item'">
+                <a class="page-link" (click)="selectPage(i+1)"> {{ i+1 }} </a>
+            </li>
+            <li class="page-item active">
+                <a class="page-link" (click)="nextPage()" > &gt;&gt; </a>
+            </li>
+        </ul>
+    </nav>
+
+</div>
+
+<ng-template #loading>
+    <div class="modal">
+        <div class="modal-inner">
+            <h2>Carregando personagens...</h2>
+        </div>
+    </div>
+</ng-template>
+
+<footer>
+    <h3>By Genese Dev!</h3>
+</footer>

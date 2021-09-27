@@ -1,0 +1,66 @@
+<section>
+    <div class="modal">
+
+        <div class="modal-inner" *ngIf="(person$ | async) as person; else loading">
+            
+            <div class="container-box">
+
+                <header>
+                    <span class="fas icone fa-arrow-left" (click)="cancelar()"></span>
+                    <h1 class="titulo"> {{ person.name }} </h1>
+                    <span class="fas icone fa-times-circle" (click)="cancelar()"></span>
+                </header>
+                <aside >
+                    <img src="{{ image }}" class="img-person" alt="personagem">
+                </aside>
+
+                <main>
+                    <div class="person">
+                        <p class="block-name"> Birth Year: {{ person.birth_year }} </p>
+                        <p class="block-name"> Eye Color: {{ person.eye_color }} </p>
+                        <p class="block-name"> Gender: {{ person.gender }} </p>
+                        <p class="block-name"> Hair Color: {{ person.hair_color }} </p>
+                        <p class="block-name"> Height: {{ person.height }} </p>
+                        <p class="block-name"> Mass: {{ person.mass }} </p>
+                        <p class="block-name"> Skin Color: {{ person.skin_color }} </p>
+                    </div>
+                </main>
+
+                <footer>
+                    <div *ngIf="listStarships.results.length > 0 ; else nostarship">
+                        <h2 class="titulo"> Starships </h2>
+                        <div class="starships" *ngFor="let starship of listStarships.results">
+                            <div>
+                                <p> Name: {{ starship.name }} </p>
+                                <p> Model: {{ starship.model }} </p>
+                                <p> Manufacturer: {{ starship.manufacturer }} </p>
+                                <p> Starship Class: {{ starship.starship_class }} </p>
+                                <p> Lenght: {{ starship.length }} </p>
+                                <p> Crew: {{ starship.crew }} </p>
+                                <p> Passengers: {{ starship.passengers }} </p>
+                                <p> Max Atmosphering Speed: {{ starship.max_atmosphering_speed }} </p>
+                            </div>
+                        </div>
+                    </div>
+                    <ng-template #nostarship>
+                        <h2 class="titulo">This person has no starship...</h2>
+                    </ng-template>
+                </footer>  
+                
+            </div>
+        </div>
+ 
+    </div>
+
+    <ng-template #loading>
+    
+        <div class="modal">
+            <div class="modal-inner">
+                <span class="fas icone fa-times-circle" (click)="cancelar()"></span>
+                <h2 class="titulo">Carregando personagem...</h2>
+            </div>
+        </div>
+        
+    </ng-template>
+
+</section>
