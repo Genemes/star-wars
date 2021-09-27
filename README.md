@@ -7,8 +7,8 @@ In listing people the project make asynchronous requests for Star Wars API, with
 In detail component it also uses asynchronous request to retrieve ships used by the person in the movies.
 
 ## Table of Content
-   * [Front Star Wars](#Sobre)
-   * [Table of Content](#tabela-de-conteudo)
+   * [Front Star Wars](#front-star-wars)
+   * [Table of Content](#table-of-content)
    * [Features](#features)
    * [Result](#result)
    * [Usage](#usage)
