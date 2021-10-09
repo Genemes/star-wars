@@ -4,6 +4,11 @@ $color-yoda: rgb(135,220,90);
 $color-obi: rgb(55,132,214);
 //#145267
 
+.error{
+    color: #ffffff !important;
+    background-color: $color-vader !important;
+}
+
 header{
     background-color: #000;
     display: flex;

@@ -8,7 +8,7 @@
 <div class="grid-container" *ngIf="people; else loading">
     
     <div class="shape" *ngFor="let person of people.results" 
-    [style.background]="getBackground(person.url)" (click)="add(person.url)">
+    [style.background]="getBackground(person.image)" (click)="getPerson(person.url)">
     
         <div class="overlay"></div>
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ImageSearchService } from '../shared/image-search.service';
 import { DetailComponent } from './detail/detail.component';
@@ -21,14 +22,15 @@ export class PersonsComponent implements OnInit {
     private service: PersonService,
     private serviceImage: ImageSearchService,
     private sanitizer: DomSanitizer,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private snackbar: MatSnackBar    
   ) {}
 
   ngOnInit() {
     Promise.all([
       this.getPeople()
-    ]).then(result => console.log('sucesso', this.people))
-    .catch(err => console.log(err));
+    ])
+    .catch(() => this.showMessage('Error in server...', 10000, 'error'));
   }
 
   getPeople() {
@@ -36,11 +38,10 @@ export class PersonsComponent implements OnInit {
       .toPromise()
       .then(people => {
         this.people = people;
-        console.log(this.people);
         //Pagination
         this.pages = this.createArray(people.count);
       })
-      .catch(err => console.log(err)) 
+      .catch(() => this.showMessage('Error to load people...', 10000, 'error')) 
       .finally(() => {
         if(this.people) {
           this.getImages(this.people.results);
@@ -52,11 +53,11 @@ export class PersonsComponent implements OnInit {
     this.serviceImage.getListImages(params)
     .toPromise()
     .then((results: any) => {
-      this.people?.results.map((person, index) => {
-         person.url = results[index].items[0].link;
-      });
+      this.people?.results.map((person, index) => 
+         person.image = results[index].items[0].link
+      );
     })
-    .catch((error: any) => console.log(error));
+    .catch(() => this.showMessage('Error to load images...', 10000, 'error'));
   }
 
   createArray(records: number): Array<number> {
@@ -95,15 +96,24 @@ export class PersonsComponent implements OnInit {
       this.getPeople();
   }
 
-  add(url: string) {
+  getPerson(url: string) {
     const separator = url.split("/");
     const position = separator.length - 2;
     const id: number =  Number.parseInt(separator[position]);
 
-    let dialogRef = this.dialog.open(DetailComponent, {
+    const dialogRef = this.dialog.open(DetailComponent, {
       width: "80%",
       height: "90%",
       data: { data: id }
+    });
+  }
+
+  showMessage(message: string, duration: number, cssClass: string) {
+    this.snackbar.open(message, 'X', {
+      duration,
+      horizontalPosition: 'end',
+      verticalPosition: 'top',
+      panelClass: cssClass
     });
   }
 
