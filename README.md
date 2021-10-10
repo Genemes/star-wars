@@ -1,23 +1,69 @@
-# StarWars
+# Front Star Wars
 
-O projeto utiliza o angular material para carregamento de modal, para instalá-lo utilize o comando abaixo.
+The Project Star Wars use the API available in [http://swapi.dev/](http://swapi.dev/).
 
-ng add @angular/material
+In listing people the project make asynchronous requests for Star Wars API, with result that request make outhres resquest for find images the people, using the service Google APIS (Google Images). The requests are made in parallel use the resource powerful the Angular, forkJoin.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.21.
+In detail component it also uses asynchronous request to retrieve ships used by the person in the movies.
 
-## Development server
+## Table of Content
+   * [Front Star Wars](#front-star-wars)
+   * [Table of Content](#table-of-content)
+   * [Features](#features)
+   * [Result](#result)
+   * [Usage](#usage)
+   * [Tecnologies](#tecnologies)
+   * [Contributing](#contributing)
+   * [License](#license)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+### Features
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- [x] Recover characters
+- [x] List characters
+- [x] Retrieve image with Google API
+- [x] Parallel requests
+- [x] Pagination
+- [x] Character details
+- [ ] Unit Tests
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Result
+* Front Star Wars
 
-## Further help
+![SignUp Mobile](screenshots/signup-mobile.png)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Usage
+
+```bash
+# Clone this repository
+$ git clone <https://github.com/Genemes/star-wars>
+
+# Access the project folder in the terminal/cmd
+$ cd star-wars
+
+# Install all dependecies uses the command:
+$ npm install
+
+# For execute Project uses the command:
+$ ng server
+
+# Open browser in address: http://localhst:4200 <http://localhost:4200>
+```
+
+### 🛠 Tecnologies
+
+The following tools were used in the construction of the project:
+
+- [Angular](https://angular.io/)
+- [Angular CLI](https://angular.io/cli)
+- [Node.js](https://nodejs.org/en/)
+- [TypeScript](https://www.typescriptlang.org/)
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
