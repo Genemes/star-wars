@@ -31,7 +31,8 @@ In detail component it also uses asynchronous request to retrieve ships used by 
 ## Result
 * Front Star Wars
 
-![SignUp Mobile](screenshots/signup-mobile.png)
+![Star-Wars-Screen](https://user-images.githubusercontent.com/31279667/136679695-5957b7dd-fe2b-445d-923c-ea6f13111bc3.gif)
+
 
 ## Usage
 
